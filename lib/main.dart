@@ -21,11 +21,11 @@ class ManageWidget extends StatefulWidget {
 }
 
 class _ManageWidgetState extends State<ManageWidget> {
-  bool _isVisible = true; 
+  bool _isVisible = true;
 
   void _toggleVisibility() {
     setState(() {
-      _isVisible = !_isVisible; 
+      _isVisible = !_isVisible;
     });
   }
 
@@ -74,28 +74,28 @@ class _ManageWidgetState extends State<ManageWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            AnimatedOpacity(
-              duration: const Duration(seconds: 1),
-              opacity: _isVisible ? 1.0 : 0.0, 
-              child: Container(
-                width: MediaQuery.of(context).size.width * 0.8,
-                height: 200,
-                color: Colors.blue,
-                child: Center(
+            if (_isVisible) 
+              Container(
+                width: 250,
+                height: 100,
+                padding: const EdgeInsets.all(16),
+                margin: const EdgeInsets.only(top: 50, bottom: 20, left: 30, right: 30),
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  border: Border.all(color: Colors.black, width: 2),
+                ),
+                child: const Align(
+                  alignment: Alignment.center,
                   child: Text(
-                    'Responsive Box',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.width * 0.05,
-                    ),
+                    "Box Model",
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
                 ),
               ),
-            ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _toggleVisibility, 
-              child: Text(_isVisible ? 'Hide' : 'Show'), 
+              onPressed: _toggleVisibility,
+              child: Text(_isVisible ? 'Hide' : 'Show'),
             ),
           ],
         ),
